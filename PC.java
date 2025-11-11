@@ -1,7 +1,7 @@
 public class PC{
     public static void main(String[] args){
         System.out.println(
-            parantheses("()")
+            parantheses("()()()")
             );
     }
 
@@ -15,14 +15,53 @@ public class PC{
         char sqTwo = ']';
         String end = "";
 
-        while (str.isEmpty() == false){
-            if (str.charAt(0) == arcOne || str.charAt(0) == curlOne || str.charAt(0) == sqOne){
+        String place = "";
+        int loc = 0;
 
-            }
-            else{
+        while (str.isEmpty() == false){
+            if (str.charAt(str.length()-1) == arcOne || str.charAt(str.length()-1) == curlOne || str.charAt(str.length()-1) == sqOne){
                 end = "Not Valid";
                 break;
             }
+
+            for (int i = str.length() - 1; i >= 0; i--){
+                if (str.charAt(i) == arcOne || str.charAt(i) == curlOne || str.charAt(i) == sqOne){
+                    loc = i;
+                    i = -1;
+                }
+            }
+            
+            if (str.charAt(loc) == arcOne){
+                if (str.charAt(loc+1) == arcTwo){
+                    str = str.substring(0, loc);
+                }
+                else{
+                    end = "Not Valid";
+                    break;
+                }
+            }
+
+            if (str.charAt(loc) == curlOne){
+                if (str.charAt(loc+1) == curlTwo){
+                    str = str.substring(0, loc);
+                }
+                else{
+                    end = "Not Valid";
+                    break;
+                }
+            }
+
+            if (str.charAt(loc) == sqOne){
+                if (str.charAt(loc+1) == sqTwo){
+                    str = str.substring(0, loc);
+                }
+                else{
+                    end = "Not Valid";
+                    break;
+                }
+            }
+
+            System.out.println(str);
         }
         return end;
     }
