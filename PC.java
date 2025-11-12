@@ -1,7 +1,7 @@
 public class PC{
     public static void main(String[] args){
         System.out.println(
-            parantheses("()()()")
+            parantheses("({[()]}())")
             );
     }
 
@@ -15,7 +15,6 @@ public class PC{
         char sqTwo = ']';
         String end = "";
 
-        String place = "";
         int loc = 0;
 
         while (str.isEmpty() == false){
@@ -33,7 +32,11 @@ public class PC{
             
             if (str.charAt(loc) == arcOne){
                 if (str.charAt(loc+1) == arcTwo){
-                    str = str.substring(0, loc);
+                    if (str.length() == 2){
+                        end = "Valid";
+                        break;
+                    }
+                    str = str.substring(0, loc) + str.substring(loc+2);
                 }
                 else{
                     end = "Not Valid";
@@ -43,7 +46,11 @@ public class PC{
 
             if (str.charAt(loc) == curlOne){
                 if (str.charAt(loc+1) == curlTwo){
-                    str = str.substring(0, loc);
+                    if (str.length() == 2){
+                        end = "Valid";
+                        break;
+                    }
+                    str = str.substring(0, loc) + str.substring(loc+2);
                 }
                 else{
                     end = "Not Valid";
@@ -53,7 +60,11 @@ public class PC{
 
             if (str.charAt(loc) == sqOne){
                 if (str.charAt(loc+1) == sqTwo){
-                    str = str.substring(0, loc);
+                    if (str.length() == 2){
+                        end = "Valid";
+                        break;
+                    }
+                    str = str.substring(0, loc) + str.substring(loc+2);
                 }
                 else{
                     end = "Not Valid";
