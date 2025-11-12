@@ -1,3 +1,9 @@
+//
+//  Class author:  Attila Juhasz
+//  Date created:  11/7/25
+//  General description: It checks if a strig of parentheses is valid or not
+//
+
 public class PC{
     public static void main(String[] args){
         System.out.println(
@@ -5,6 +11,10 @@ public class PC{
             );
     }
 
+//
+//  Pre-condition: You must have a string made up of only parentheses.
+//  Post-condition: It will return a string saying Vaid or Not Valid based on whether the parentheses are validly nested or not.
+//
 
     public static String parantheses(String str){
         char arcOne = '(';
@@ -71,8 +81,6 @@ public class PC{
                     break;
                 }
             }
-
-            System.out.println(str);
         }
         return end;
     }
