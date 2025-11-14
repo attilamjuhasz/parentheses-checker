@@ -7,12 +7,12 @@
 public class PC{
     public static void main(String[] args){
         System.out.println(
-            parantheses("({[()]}())")
+            parantheses("](")
             );
     }
 
 //
-//  Pre-condition: You must have a string made up of only parentheses.
+//  Pre-condition: You must have a string made up of only parentheses. No empty strings.
 //  Post-condition: It will return a string saying Vaid or Not Valid based on whether the parentheses are validly nested or not.
 //
 
@@ -28,6 +28,10 @@ public class PC{
         int loc = 0;
 
         while (str.isEmpty() == false){
+
+            loc = -1;
+            
+
             if (str.charAt(str.length()-1) == arcOne || str.charAt(str.length()-1) == curlOne || str.charAt(str.length()-1) == sqOne){
                 end = "Not Valid";
                 break;
@@ -39,6 +43,11 @@ public class PC{
                     i = -1;
                 }
             }
+
+            if (loc == -1 || loc + 1 >= str.length()) {
+                end = "Not Valid";
+                break;
+            }
             
             if (str.charAt(loc) == arcOne){
                 if (str.charAt(loc+1) == arcTwo){
@@ -46,7 +55,14 @@ public class PC{
                         end = "Valid";
                         break;
                     }
-                    str = str.substring(0, loc) + str.substring(loc+2);
+                    else if (str.length() - 1 == loc+1) {
+                        str = str.substring(0, loc);
+                        continue;
+                    }
+                    else{
+                        str = str.substring(0, loc) + str.substring(loc+2);
+                        continue;
+                    }
                 }
                 else{
                     end = "Not Valid";
@@ -60,7 +76,14 @@ public class PC{
                         end = "Valid";
                         break;
                     }
-                    str = str.substring(0, loc) + str.substring(loc+2);
+                    else if (str.length() - 1 == loc+1) {
+                        str = str.substring(0, loc);
+                        continue;
+                    }
+                    else{
+                        str = str.substring(0, loc) + str.substring(loc+2);
+                        continue;
+                    }
                 }
                 else{
                     end = "Not Valid";
@@ -74,7 +97,14 @@ public class PC{
                         end = "Valid";
                         break;
                     }
-                    str = str.substring(0, loc) + str.substring(loc+2);
+                    else if (str.length() - 1 == loc+1) {
+                        str = str.substring(0, loc);
+                        continue;
+                    }
+                    else{
+                        str = str.substring(0, loc) + str.substring(loc+2);
+                        continue;
+                    }
                 }
                 else{
                     end = "Not Valid";
